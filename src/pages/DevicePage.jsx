@@ -15,13 +15,14 @@ export default function DevicePage() {
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
-
+// const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const baseUrl = import.meta.env.VITE_API_URL || 'https://safe-vend-backend.onrender.com/api';
   // Fetch device and product data
-  useEffect(() => {
+  useEffect(() => { 
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`http://localhost:5000/api/devices/${deviceId}`);
+        const response = await fetch(`${baseUrl}/devices/${deviceId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
